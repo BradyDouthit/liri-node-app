@@ -52,7 +52,7 @@ function searchSong() {
     });
 };
 //concert-this
-function bandsInTown() {
+function searchBand() {
   paramCheck();
   axios.get("https://rest.bandsintown.com/artists/" + searchParam + "/events?app_id=codingbootcamp")
     .then(response => {
@@ -68,11 +68,37 @@ function bandsInTown() {
       console.log(error);
     });
 };
+//movie-this
+function searchMovie() {
+  paramCheck();
+  var queryUrl = "http://www.omdbapi.com/?t=" + searchParam + "&y=&plot=short&apikey=trilogy";
+
+  axios.get(queryUrl).then(
+    function (response) {
+      console.log("\n--------------------\n")
+      console.log("Title: " + response.data.Title);
+      console.log("Release Year: " + response.data.Year);
+      //console.log("Rated: " + response.data.Rated);
+      console.log("IMDB Rating: " + response.data.imdbRating);
+      console.log("Rotten Tomatoes: " + response.data.Ratings[1].Value);
+      console.log("Country: " + response.data.Country);
+      console.log("Language: " + response.data.Language);
+      console.log("Fun fact: " + response.data.Title + " made " + response.data.BoxOffice + "\n");
+      console.log("Plot: " + response.data.Plot + "\n");
+      console.log("Actors: " + response.data.Actors);
+      console.log("\n--------------------\n")
+    }
+  );
+}
 
 if (command === 'spotify-this-song') {
   searchSong();
 };
 
 if (command === 'concert-this') {
-  bandsInTown();
+  searchBand();
+};
+
+if (command === 'movie-this') {
+  searchMovie();
 };
