@@ -1,4 +1,5 @@
 require("dotenv").config();
+const fs = require('fs');
 const keys = require("./keys.js");
 const Spotify = require('node-spotify-api');
 const axios = require('axios');
@@ -7,7 +8,7 @@ var spotify = new Spotify(keys.spotify);
 var searchParam = "";
 var nodeArgs = process.argv;
 var command = process.argv[2];
-
+var commandAndParam = ""
 
 //Makes sure that searches work even when there are multiple words and spaces
 var paramCheck = function () {
@@ -38,7 +39,6 @@ function searchSong() {
       var link = response.tracks.items[0].external_urls.spotify;
       var album = response.tracks.items[0].album.name;
       var artist = response.tracks.items[0].artists[0].name;
-
       console.log("\n--------------------\n")
       console.log("Artist(s): " + artist)
       console.log("Album: " + album);
@@ -56,6 +56,7 @@ function searchBand() {
   paramCheck();
   axios.get("https://rest.bandsintown.com/artists/" + searchParam + "/events?app_id=codingbootcamp")
     .then(response => {
+      console.log(response.data);
       console.log("\n--------------------\n")
       console.log(searchParam.charAt(0).toUpperCase() + searchParam.slice(1) + ":\n")
       console.log(response.data[0].venue.name);
@@ -75,7 +76,7 @@ function searchMovie() {
 
   axios.get(queryUrl).then(
     function (response) {
-      console.log("\n--------------------\n")
+      console.log("\n--------------------\n");
       console.log("Title: " + response.data.Title);
       console.log("Release Year: " + response.data.Year);
       //console.log("Rated: " + response.data.Rated);
@@ -86,10 +87,11 @@ function searchMovie() {
       console.log("Fun fact: " + response.data.Title + " made " + response.data.BoxOffice + "\n");
       console.log("Plot: " + response.data.Plot + "\n");
       console.log("Actors: " + response.data.Actors);
-      console.log("\n--------------------\n")
+      console.log("\n--------------------\n");
     }
   );
 }
+
 
 if (command === 'spotify-this-song') {
   searchSong();
@@ -102,3 +104,17 @@ if (command === 'concert-this') {
 if (command === 'movie-this') {
   searchMovie();
 };
+
+if (command === 'do-what-it-says') {
+  fs.readFile("random.txt","utf8", function (err, data) {
+    if (err) {
+      console.log(err)
+    };
+    var dataArray = data.split(",");
+    command = dataArray[0];
+    searchParam = " " + dataArray[1]; 
+    if(command === 'spotify-this-song'){
+      searchSong();
+    }
+  })
+}
