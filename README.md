@@ -1,5 +1,5 @@
 # liri-node-app
-This Node.js app takes user input and does different things based on several commands.
+ ## This Node.js app takes user input and does different things based on several commands.
 Search for concerts by band: 
 ![alt text](images/concert-this.PNG)
 
