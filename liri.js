@@ -54,7 +54,8 @@ function searchSong() {
 //concert-this
 function searchBand() {
   paramCheck();
-  axios.get("https://rest.bandsintown.com/artists/" + searchParam + "/events?app_id=codingbootcamp")
+  var bandURL = "https://rest.bandsintown.com/artists/" + searchParam + "/events?app_id=codingbootcamp"
+  axios.get(bandURL)
     .then(response => {
       console.log(response.data);
       console.log("\n--------------------\n")
@@ -111,10 +112,7 @@ if (command === 'do-what-it-says') {
       console.log(err)
     };
     var dataArray = data.split(",");
-    command = dataArray[0];
-    searchParam = " " + dataArray[1]; 
-    if(command === 'spotify-this-song'){
-      searchSong();
-    }
-  })
+    searchParam = dataArray[1];
+    searchSong();
+  });
 }
