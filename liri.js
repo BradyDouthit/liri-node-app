@@ -8,7 +8,6 @@ var spotify = new Spotify(keys.spotify);
 var searchParam = "";
 var nodeArgs = process.argv;
 var command = process.argv[2];
-var commandAndParam = ""
 
 //Makes sure that searches work even when there are multiple words and spaces
 var paramCheck = function () {
