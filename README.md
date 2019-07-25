@@ -2,7 +2,8 @@
  ## This Node.js app takes user input and does different things based on several commands.
  #### It can find concerts(using the Bands In Town API).
  #### It can find songs(using the spotify search API). 
- #### It can also find movies(using the OMBD API). 
+ #### It can find movies(using the OMBD API). 
+ #### Lastly, it can search Spotify for songs located in a text file.
 Search for concerts by band: 
 ![alt text](images/concert-this.PNG)
 
