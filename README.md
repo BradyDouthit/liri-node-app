@@ -3,7 +3,7 @@
  #### It can find concerts(using the Bands In Town API).
  #### It can find songs(using the spotify search API). 
  #### It can find movies(using the OMBD API). 
- #### Lastly, it can search Spotify for songs located in a text file.
+ #### Lastly, it can execute these commands from a local text file.
 Search for concerts by band: 
 ![alt text](images/concert-this.PNG)
 
