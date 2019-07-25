@@ -1,5 +1,6 @@
 # liri-node-app
  ## This Node.js app takes user input and does different things based on several commands.
+ #### It can find songs(using the spotify search API), movies(using the OMBD API), and concerts(using the Bands In Town API).
 Search for concerts by band: 
 ![alt text](images/concert-this.PNG)
 
