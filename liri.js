@@ -131,15 +131,13 @@ if (command === 'do-what-it-says') {
     };
     var dataArray = data.split(",");
     searchParam = dataArray[1];
+    searchParam = searchParam.split('"').join('')
     command = dataArray[0];
     if (command === 'spotify-this-song'){
       searchSong();
     }
     if (command === 'concert-this'){
       searchBand();
-    }
-    if (command === 'spotify-this-song'){
-      searchSong();
     }
   });
 }
