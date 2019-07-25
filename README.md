@@ -19,6 +19,6 @@ Search for movies:
 ![alt text](images/movie-this.PNG)
 
 
-Using a txt file to search spotify for the song in the file:
+Using a text file to search spotify for the song in the file:
 ![alt text](images/do-what-it-says.PNG)
 
