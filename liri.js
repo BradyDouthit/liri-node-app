@@ -8,7 +8,26 @@ var spotify = new Spotify(keys.spotify);
 var searchParam = "";
 var nodeArgs = process.argv;
 var command = process.argv[2];
-
+if (command === undefined) {
+  console.log("Please enter one of the following commands:");
+  console.log("\n--------------------\n");
+  console.log("spotify-this-song: gets a song from spotify\n");
+  console.log("Format: spotify-this-song more than a feeling");
+  console.log("\n--------------------\n");
+  console.log("\n--------------------\n");
+  console.log("concert-this: finds concerts coming up from bands that you specify\n");
+  console.log("Format: concert-this boston");
+  console.log("(Boston probably isn't touring.)");
+  console.log("\n--------------------\n");
+  console.log("\n--------------------\n");
+  console.log("movie-this: gets information about a movie\n");
+  console.log("Format: movie-this deadpool");
+  console.log("\n--------------------\n");
+  console.log("\n--------------------\n");
+  console.log("do-what-it-says: reads a text file in this project and searches spotify for a song in the file\n");
+  console.log("Format: do-what-it-says");
+  console.log("\n--------------------\n");
+};
 //Makes sure that searches work even when there are multiple words and spaces
 var paramCheck = function () {
   for (var i = 3; i < nodeArgs.length; i++) {
@@ -112,6 +131,15 @@ if (command === 'do-what-it-says') {
     };
     var dataArray = data.split(",");
     searchParam = dataArray[1];
-    searchSong();
+    command = dataArray[0];
+    if (command === 'spotify-this-song'){
+      searchSong();
+    }
+    if (command === 'concert-this'){
+      searchBand();
+    }
+    if (command === 'spotify-this-song'){
+      searchSong();
+    }
   });
 }
