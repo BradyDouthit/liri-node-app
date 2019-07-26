@@ -12,20 +12,20 @@ if (command === undefined) {
   console.log("Please enter one of the following commands:");
   console.log("\n--------------------\n");
   console.log("spotify-this-song: gets a song from spotify\n");
-  console.log("Format: spotify-this-song more than a feeling");
+  console.log("Example: spotify-this-song more than a feeling");
   console.log("\n--------------------\n");
   console.log("\n--------------------\n");
   console.log("concert-this: finds concerts coming up from bands that you specify\n");
-  console.log("Format: concert-this boston");
+  console.log("Example: concert-this boston");
   console.log("(Boston probably isn't touring.)");
   console.log("\n--------------------\n");
   console.log("\n--------------------\n");
   console.log("movie-this: gets information about a movie\n");
-  console.log("Format: movie-this deadpool");
+  console.log("Example: movie-this deadpool");
   console.log("\n--------------------\n");
   console.log("\n--------------------\n");
   console.log("do-what-it-says: reads a text file in this project and searches spotify for a song in the file\n");
-  console.log("Format: do-what-it-says");
+  console.log("Example: do-what-it-says");
   console.log("\n--------------------\n");
 };
 //Makes sure that searches work even when there are multiple words and spaces
@@ -134,7 +134,7 @@ if (command === 'do-what-it-says') {
     var dataArray = data.split(",");
     command = dataArray[0];
     searchParam = dataArray[1];
-    searchParam = searchParam.split('"').join('')
+    searchParam = searchParam.split('"').join('');
     if (command === 'spotify-this-song') {
       searchSong();
     };

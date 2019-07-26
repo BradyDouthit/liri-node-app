@@ -23,3 +23,7 @@ Search for movies:
 Using a text file to search spotify for the song in the file:
 ![alt text](images/do-what-it-says.PNG)
 
+
+Contents of the text file: 
+![alt text](images/text-file.PNG)
+
