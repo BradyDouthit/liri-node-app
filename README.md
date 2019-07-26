@@ -25,5 +25,7 @@ Using a text file to search spotify for the song in the file:
 
 
 Contents of the text file:
+
+
 ![alt text](images/text-file.PNG)
 
