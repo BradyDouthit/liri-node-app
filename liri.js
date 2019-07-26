@@ -75,14 +75,16 @@ function searchBand() {
   var bandURL = "https://rest.bandsintown.com/artists/" + searchParam + "/events?app_id=codingbootcamp"
   axios.get(bandURL)
     .then(response => {
-      console.log(response.data);
-      console.log("\n--------------------\n")
-      console.log(searchParam.charAt(0).toUpperCase() + searchParam.slice(1) + ":\n")
-      console.log(response.data[0].venue.name);
-      console.log(response.data[0].venue.city + ', ' + response.data[0].venue.region);
-      var timeFormatted = new moment(response.data[0].datetime).format("MM/DD/YYYY");
-      console.log(timeFormatted);
-      console.log("\n--------------------\n")
+      for (var i = 0; i < response.data.length; i++) {
+        //console.log(response.data[i])
+        console.log("\n--------------------\n")
+        console.log(searchParam.charAt(0).toUpperCase() + searchParam.slice(1) + ":\n")
+        console.log(response.data[i].venue.name);
+        console.log(response.data[i].venue.city + ', ' + response.data[i].venue.region);
+        var timeFormatted = new moment(response.data[i].datetime).format("MM/DD/YYYY");
+        console.log(timeFormatted);
+        console.log("\n--------------------\n")
+      }
     })
     .catch(error => {
       console.log(error);
@@ -125,19 +127,23 @@ if (command === 'movie-this') {
 };
 
 if (command === 'do-what-it-says') {
-  fs.readFile("random.txt","utf8", function (err, data) {
+  fs.readFile("random.txt", "utf8", function (err, data) {
     if (err) {
       console.log(err)
     };
     var dataArray = data.split(",");
+    command = dataArray[0];
     searchParam = dataArray[1];
     searchParam = searchParam.split('"').join('')
-    command = dataArray[0];
-    if (command === 'spotify-this-song'){
+    if (command === 'spotify-this-song') {
       searchSong();
-    }
-    if (command === 'concert-this'){
+    };
+    if (command === 'concert-this') {
       searchBand();
+    };
+    if (command === 'movie-this') {
+      searchMovie();
     }
+
   });
 }
